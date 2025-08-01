@@ -1,0 +1,195 @@
+<?php
+/**
+ * Menu partial para Laminas
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+
+use Laminas\Navigation\Navigation;
+use Laminas\Config\Config;
+use Laminas\Session\Container;
+
+// Simulación de datos de sesión para desarrollo
+// En producción, estos datos vendrían de tu sistema de autenticación real
+$mockAuth = (object) [
+    'rol' => 1, // Rol por defecto para testing
+    '_acl' => null // ACL se configuraría desde tu sistema de permisos
+];
+
+// Simulamos el contenedor de sesión global
+$mockGlobal = (object) [
+    'menu' => isset($_GET['setmodule']) ? $_GET['setmodule'] : 1
+];
+
+// En una implementación real de Laminas, usarías:
+// $sessionContainer = new Container('caudataGlobal');
+// $global = $sessionContainer;
+
+$global = $mockGlobal;
+$auth = $mockAuth;
+
+// Definir el menú principal (estas constantes deberían estar en tu config)
+$menuPrincipal = 'menuprincipal'; // Equivalente a MENU_PRINCIPAL
+
+// Actualizar el menú si viene por GET
+$global->menu = isset($_GET['setmodule']) ? $_GET['setmodule'] : $global->menu;
+
+// Switch para determinar qué menú usar
+switch ($global->menu) {
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+        $menuPrincipal = 'menuprincipal'; // MENU_PRINCIPAL
+        break;
+    case '7':
+        $menuPrincipal = 'menudocumentos';
+        break;
+    case '9':
+        if (defined('PUBLIC_PATH') && PUBLIC_PATH == "/aw") {
+            $menuPrincipal = 'menuinventario';
+        } else {
+            $menuPrincipal = 'menuinventariocrik';
+        }
+        break;
+    case '10':
+        $menuPrincipal = 'menuinterventoria';
+        break;
+    case '11':
+        $menuPrincipal = 'menuhelpdesk';
+        break;
+    default:
+        $global->menu = 1;
+        $menuPrincipal = 'menuprincipal';
+}
+
+// Verificar roles específicos para interventoría
+if (in_array($auth->rol, [36, 37, 42, 43])) {
+    $menuFile = '../menus/menuinterventoria.xml';
+} else {
+    $menuFile = '../menus/' . $menuPrincipal . '.xml';
+}
+
+try {
+    // En Laminas, la configuración XML se maneja diferente
+    if (file_exists($menuFile)) {
+        // Crear configuración desde XML
+        $config = new Config([], true);
+        
+        // Simular estructura de navegación ya que no tenemos los archivos XML
+        // En tu implementación real, cargarías desde el archivo XML
+        $navigationConfig = [
+            [
+                'label' => 'Inicio',
+                'uri' => '/',
+                'class' => 'nav-link',
+                'pages' => []
+            ],
+            [
+                'label' => 'Capital Humano',
+                'uri' => '/capital-humano',
+                'class' => 'nav-link dropdown-toggle',
+                'pages' => [
+                    [
+                        'label' => 'Empleados',
+                        'uri' => '/empleados',
+                        'class' => 'dropdown-item'
+                    ],
+                    [
+                        'label' => 'Nómina',
+                        'uri' => '/nomina',
+                        'class' => 'dropdown-item'
+                    ]
+                ]
+            ],
+            [
+                'label' => 'Turnos',
+                'uri' => '/turnos',
+                'class' => 'nav-link',
+                'pages' => []
+            ],
+            [
+                'label' => 'Informes',
+                'uri' => '/informes',
+                'class' => 'nav-link dropdown-toggle',
+                'pages' => [
+                    [
+                        'label' => 'Reportes',
+                        'uri' => '/reportes',
+                        'class' => 'dropdown-item'
+                    ]
+                ]
+            ]
+        ];
+        
+        // Crear el contenedor de navegación
+        $navigation = new Navigation($navigationConfig);
+        
+        // En Laminas, el helper de navegación se obtiene diferente
+        $navHelper = $this->plugin('navigation');
+        
+        // Configurar ACL si existe
+        if ($auth->_acl !== null) {
+            $navHelper->setAcl($auth->_acl);
+            $navHelper->setRole($auth->rol);
+        }
+        
+        // Renderizar el menú con Bootstrap 5
+        echo renderBootstrap5Menu($navigation, $auth->rol);
+        
+    } else {
+        echo '<ul class="navbar-nav"><li class="nav-item"><span class="nav-link">Menú no encontrado</span></li></ul>';
+    }
+    
+} catch (Exception $e) {
+    // Log del error en producción
+    error_log('Error loading navigation menu: ' . $e->getMessage());
+    echo '<ul class="navbar-nav"><li class="nav-item"><span class="nav-link">Error al cargar menú</span></li></ul>';
+}
+
+/**
+ * Función para renderizar menú con Bootstrap 5
+ * Esta función reemplaza el helper bootstrapmenu() de Zend
+ */
+function renderBootstrap5Menu($navigation, $userRole = null) {
+    $html = '<ul class="navbar-nav me-auto mb-2 mb-lg-0">';
+    
+    foreach ($navigation as $page) {
+        if (!$page->isVisible()) continue;
+        
+        $hasChildren = $page->hasPages();
+        $isActive = $page->isActive(true);
+        
+        if ($hasChildren) {
+            // Menú con dropdown
+            $html .= '<li class="nav-item dropdown">';
+            $html .= '<a class="nav-link dropdown-toggle' . ($isActive ? ' active' : '') . '" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
+            $html .= htmlspecialchars($page->getLabel());
+            $html .= '</a>';
+            $html .= '<ul class="dropdown-menu">';
+            
+            foreach ($page->getPages() as $subPage) {
+                if (!$subPage->isVisible()) continue;
+                
+                $html .= '<li><a class="dropdown-item" href="' . htmlspecialchars($subPage->getHref()) . '">';
+                $html .= htmlspecialchars($subPage->getLabel());
+                $html .= '</a></li>';
+            }
+            
+            $html .= '</ul>';
+            $html .= '</li>';
+        } else {
+            // Menú simple
+            $html .= '<li class="nav-item">';
+            $html .= '<a class="nav-link' . ($isActive ? ' active' : '') . '" href="' . htmlspecialchars($page->getHref()) . '">';
+            $html .= htmlspecialchars($page->getLabel());
+            $html .= '</a>';
+            $html .= '</li>';
+        }
+    }
+    
+    $html .= '</ul>';
+    return $html;
+}
+?>

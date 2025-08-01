@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <nav>
+    	<home>
+	        <label></label>
+	        <order>-100</order>
+	        <module>default</module>
+	        <controller>index</controller>
+	        <action>index</action>
+	        <icon>icon-home</icon>	
+	    </home>
+
+		<talentohumano>			
+            <label>Capital Humano</label>
+            <order>5</order>
+            <module>clientes</module>
+            <controller>asociado</controller>
+            <action>index</action>
+            <resource>clientes:asociado</resource>
+	  		<privilege>index</privilege>
+	  		<visible>1</visible>
+
+	  		<pages>
+		  		<trabajadores>
+		  			<label>Trabajadores</label>
+		  			<order>5</order>
+		  			<module>clientes</module>
+		  			<controller>asociado</controller>
+		  			<action>index</action>
+		  			<resource>clientes:asociado</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  				<pages>
+		  					<asomenulateral>
+					  			<label>Menulateral Trabajadores</label>
+					  			<order>6</order>
+					  			<module>clientes</module>
+					  			<controller>asociado</controller>
+					  			<action>menulateral</action>
+					  			<resource>clientes:asociado</resource>
+					  			<privilege>menulateral</privilege>	
+					  			<visible>0</visible>		  					
+		  					</asomenulateral>
+		  				</pages>		  					
+		  		</trabajadores>
+
+		  		<contratos>
+		  			<label>Contratos</label>
+		  			<order>6</order>
+		  			<module>clientes</module>
+		  			<controller>contratoasociado</controller>
+		  			<action>allcontratos</action>
+		  			<resource>clientes:contratoasociado</resource>
+		  			<privilege>allcontratos</privilege>		
+		  			<visible>1</visible>		  					
+		  		</contratos>
+
+		  		<verificarnovedades>
+		  			<label>Verificar Novedades</label>
+		  			<order>7</order>
+		  			<module>clientes</module>
+		  			<controller>novedades</controller>
+		  			<action>incapacidades</action>
+		  			<resource>clientes:novedades</resource>
+		  			<privilege>incapacidades</privilege>	
+		  			<visible>1</visible>
+		  		</verificarnovedades>
+
+		  		<nomina>
+		  			<label>Nómina</label>
+		  			<order>8</order>
+		  			<module>nomina</module>
+		  			<controller>nominames</controller>
+		  			<action>index</action>
+		  			<resource>nomina:nominames</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  				<pages>
+					  		<nommenulateral>
+					  			<label>menulateral nominames</label>
+					  			<order>9</order>
+					  			<module>nomina</module>
+					  			<controller>nominames</controller>
+					  			<action>menulateral</action>
+					  			<resource>nomina:nominames</resource>	
+					  			<visible>0</visible>
+		  						<privilege>menulateral</privilege>		  							
+									<pages>
+										<submenulateral>
+											<label>menulateral subnominames</label>
+											<order>9</order>
+											<module>nomina</module>
+											<controller>subnominames</controller>
+											<action>menulateral</action>
+											<resource>nomina:subnominames</resource>	
+											<visible>0</visible>
+											<privilege>menulateral</privilege>
+										</submenulateral>
+									</pages>
+					  		</nommenulateral>
+					  	</pages>
+		  		</nomina>
+
+		  		<amortizacion>
+		  			<label>Amortización</label>
+		  			<order>9</order>
+		  			<module>nomina</module>
+		  			<controller>amortizaciones</controller>
+		  			<action>index</action>
+		  			<resource>nomina:amortizaciones</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</amortizacion>
+<!-- 
+		  		<upcadicional>
+		  			<label>UPC adicional</label>
+		  			<order>10</order>
+		  			<module>nomina</module>
+		  			<controller>upcadicional</controller>
+		  			<action>index</action>
+		  			<resource>nomina:upcadicional</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</upcadicional> -->
+
+		  		<ingresosfijos>
+		  			<label>Ingresos Fijos</label>
+		  			<order>11</order>
+		  			<module>nomina</module>
+		  			<controller>ingresosfijos</controller>
+		  			<action>index</action>
+		  			<resource>nomina:ingresosfijos</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</ingresosfijos>
+
+		  		<vacaciones>
+		  			<label>Vacaciones</label>
+		  			<order>12</order>
+		  			<module>nomina</module>
+		  			<controller>vacaciones</controller>
+		  			<action>index</action>
+		  			<resource>nomina:vacaciones</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</vacaciones>
+
+		  		<prima>
+		  			<label>Prima</label>
+		  			<order>13</order>
+		  			<module>nomina</module>
+		  			<controller>semestre</controller>
+		  			<action>index</action>
+		  			<resource>nomina:semestre</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</prima>
+
+		  		<cesantias>
+		  			<label>Cesantias</label>
+		  			<order>14</order>
+		  			<module>nomina</module>
+		  			<controller>periodocesantias</controller>
+		  			<action>index</action>
+		  			<resource>nomina:periodocesantias</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</cesantias>
+
+		  		<liquidaciones>
+		  			<label>Liquidaciones</label>
+		  			<order>15</order>
+		  			<module>nomina</module>
+		  			<controller>liquidaciones</controller>
+		  			<action>index</action>
+		  			<resource>nomina:liquidaciones</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</liquidaciones>
+
+		  		<liquidacionesmasivas>
+		  			<label>Liquidaciones Masivas</label>
+		  			<order>15</order>
+		  			<module>nomina</module>
+		  			<controller>liquidacionesmasivas</controller>
+		  			<action>index</action>
+		  			<resource>nomina:liquidacionesmasivas</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</liquidacionesmasivas>
+
+		  		<certificadoslaborales>
+		  			<label>Certificados Laborales</label>
+		  			<order>16</order>
+		  			<module>nomina</module>
+		  			<controller>certificadolaboral</controller>
+		  			<action>index</action>
+		  			<resource>nomina:certificadolaboral</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</certificadoslaborales>
+	
+		  		<cambiarempresa>
+		  			<label>Actualizar trabajador de Empresa</label>
+		  			<order>17</order>
+		  			<module>clientes</module>
+		  			<controller>contratoasociado</controller>
+		  			<action>actualizarempresa</action>
+		  			<resource>clientes:contratoasociado</resource>
+		  			<privilege>actualizarempresa</privilege>	
+		  			<visible>1</visible>
+		  		</cambiarempresa>
+
+				<trasladosadministradora>
+		  			<label>Traslado de administradora</label>
+		  			<order>18</order>
+		  			<module>nomina</module>
+		  			<controller>trasladosadministradora</controller>
+		  			<action>index</action>
+		  			<resource>nomina:trasladosadministradora</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</trasladosadministradora>
+
+		  		<programarregistropensionados>
+		  			<label>Registrar pensionados</label>
+		  			<order>19</order>
+		  			<module>nomina</module>
+		  			<controller>programarregistropensionados</controller>
+		  			<action>index</action>
+		  			<resource>nomina:programarregistropensionados</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</programarregistropensionados>
+
+		  		<auditartrabajadores>
+		  			<label>Auditoria Trabajadores</label>
+		  			<order>20</order>
+		  			<module>clientes</module>
+		  			<controller>asociado</controller>
+		  			<action>auditarcamposvacios</action>
+		  			<resource>clientes:asociado</resource>
+		  			<privilege>auditarcamposvacios</privilege>	
+		  			<visible>1</visible>
+
+		  		</auditartrabajadores>
+
+		  		<!-- <listasubnominas>
+		  			<label>Listar Subnominas</label>
+		  			<order>21</order>
+		  			<module>nomina</module>
+		  			<controller>subnominames</controller>
+		  			<action>listarsubnominas</action>
+		  			<resource>nomina:subnominames</resource>
+		  			<privilege>listarsubnominas</privilege>	
+		  			<visible>1</visible>
+		  		</listasubnominas> -->
+
+		  		<migracionvacaciones>
+		  			<label>Migración Vacaciones</label>
+		  			<order>22</order>
+		  			<module>nomina</module>
+		  			<controller>migracionvacaciones</controller>
+		  			<action>index</action>
+		  			<resource>nomina:migracionvacaciones</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</migracionvacaciones>
+
+		  		<vatest>
+		  			<label>Pruebas V / A</label>
+		  			<order>23</order>
+		  			<module>clientes</module>
+		  			<controller>vatest</controller>
+		  			<action>index</action>
+		  			<resource>clientes:vatest</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>		  		
+		  		</vatest>
+
+		  		<periodoencuesta>
+		  			<label>Encuestas Satisfacción</label>
+		  			<order>23</order>
+		  			<module>zonatrabajador</module>
+		  			<controller>periodoencuesta</controller>
+		  			<action>index</action>
+		  			<resource>zonatrabajador:periodoencuesta</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>		  		
+		  		</periodoencuesta> 
+
+
+		  		<otrosegresos>
+		  			<label>Embargos</label>
+		  			<order>24</order>
+		  			<module>otrosegresos</module>
+		  			<controller>oegeneral</controller>
+		  			<action>menulateral</action>
+		  			<resource>otrosegresos:oegeneral</resource>
+		  			<privilege>menulateral</privilege>	
+		  			<visible>1</visible>
+		  		</otrosegresos>
+		  		<contabilidadsubnominames>
+		  			<label>Informes Contabilidad</label>
+		  			<order>30</order>
+		  			<module>contabilidad</module>
+		  			<controller>subnominames</controller>
+		  			<action>index</action>
+		  			<resource>contabilidad:subnominames</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</contabilidadsubnominames>
+		  		<pagosmasivos>
+		  			<label>Pagos en Bancos</label>
+		  			<order>31</order>
+		  			<module>pagosenbancos</module>
+		  			<controller>bancodavivienda</controller>
+		  			<action>menulateral</action>
+		  			<resource>pagosenbancos:bancodavivienda</resource>
+		  			<privilege>menulateral</privilege>
+		  			<visible>1</visible>
+		  		</pagosmasivos>
+			</pages>
+		</talentohumano>
+
+		<!-- Este modulo completo se quito porque se utilizaba para trasnportar cuando se pagaba era por cuanto generaba -->
+
+		<!-- <coordinadorproductividad>
+		    <label>Producción</label>
+		    <order>8</order>
+		    <module>produccion</module>
+		    <controller>administracion</controller>
+		    <action>menulateral</action>
+		    <resource>produccion:administracion</resource>
+		    <privilege>menulateral</privilege>
+		    <visible>1</visible>
+		    <class> dropdown-toggle</class>
+		   
+			<pages>
+				<produccion>
+					<label>General</label>
+					<order>6</order>
+					<module>produccion</module>
+					<controller>administracion</controller>
+					<action>menulateral</action>
+					<resource>produccion:administracion</resource>
+					<privilege>menulateral</privilege>
+					<visible>1</visible>
+				</produccion>
+				<produccionsimul>
+					<label>Simulador</label>
+					<order>8</order>
+					<module>produccion</module>
+					<controller>producciondiaria</controller>
+					<action>simulador</action>
+					<resource>produccion:producciondiaria</resource>
+					<privilege>simulador</privilege>
+					<visible>1</visible>
+				</produccionsimul>
+				<novedades>
+					<label>Novedades</label>
+					<order>19</order>
+					<module>clientes</module>
+					<controller>novedades</controller>
+					<action>indexnovedades</action>
+					<resource>clientes:novedades</resource>
+					<privilege>indexnovedades</privilege>
+					<visible>1</visible>
+				</novedades>
+				<nomina>
+					<label>Nómina</label>
+					<order>8</order>
+					<module>nomina</module>
+					<controller>nominames</controller>
+					<action>index</action>
+					<resource>nomina:nominames</resource>
+					<privilege>index</privilege>
+					<visible>1</visible>
+				</nomina>
+			</pages>
+		</coordinadorproductividad>
+		 -->
+ 		<turnos>
+            <label>Turnos</label>
+            <order>17</order>
+            <module>clientes</module>
+            <controller>contratoempresa</controller>
+            <action>turnosmenu</action>
+            <resource>clientes:contratoempresa</resource>
+	  		<privilege>turnosmenu</privilege>
+	  		<visible>1</visible>
+	  		<pages>
+		  		<generales>
+		  			<label>Turnos</label>
+		            <order>18</order>
+		            <module>clientes</module>
+		            <controller>contratoempresa</controller>
+		            <action>buscadorasociado</action>
+		            <resource>clientes:contratoempresa</resource>
+		  			<privilege>buscadorasociado</privilege>	
+		  			<visible>1</visible>
+		  		</generales>
+		  		<novedades>
+		  			<label>Novedades</label>
+		            <order>19</order>
+		            <module>clientes</module>
+		            <controller>novedades</controller>
+		            <action>indexnovedades</action>
+		            <resource>clientes:novedades</resource>
+		  			<privilege>indexnovedades</privilege>	
+		  			<visible>1</visible>
+		  		</novedades>
+		  		<reportedetiempo>
+		  			<label>Reporte de tiempos Diario</label>
+		            <order>20</order>
+		            <module>clientes</module>
+		            <controller>turnoasociado</controller>
+		            <action>reportedetiempos</action>
+		            <resource>clientes:turnoasociado</resource>
+		  			<privilege>reportedetiempos</privilege>	
+		  			<visible>1</visible>
+		  		</reportedetiempo>
+		  		<reportedetiemposem>
+		  			<label>Reporte de tiempos Semanal</label>
+		            <order>21</order>
+		            <module>clientes</module>
+		            <controller>turnoasociado</controller>
+		            <action>reportetiemposemanal</action>
+		            <resource>clientes:turnoasociado</resource>
+		  			<privilege>reportetiemposemanal</privilege>	
+		  			<visible>1</visible>
+		  		</reportedetiemposem>
+				<turnosmasivos>
+					<label>Turnos masivos</label>
+					<order>22</order>
+					<module>clientes</module>
+					<controller>turnosmasivos</controller>
+					<action>index</action>
+					<resource>clientes:turnosmasivos</resource>
+					<privilege>index</privilege>	
+					<visible>1</visible>
+				</turnosmasivos>
+			</pages>
+		</turnos>		
+
+		<informes>
+            <label>Informes</label>
+            <order>20</order>
+            <module>informes</module>
+            <controller>informes</controller>
+            <action>listado</action>
+            <resource>informes:informes</resource>
+	  		<privilege>listado</privilege>
+	  		<visible>1</visible>
+	  		<pages>
+				<certifiadoingresos>
+		  			<label>Certificado de ingresos y retenciones</label>
+		  			<order>21</order>
+		  			<module>nomina</module>
+		  			<controller>certificadoingresosyretencion</controller>
+		  			<action>index</action>
+		  			<resource>nomina:certificadoingresosyretencion</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		</certifiadoingresos>
+		  		<generales>
+		  			<label>Generales</label>
+		  			<order>21</order>
+		  			<module>clientes</module>
+		  			<controller>contratoempresa</controller>
+		  			<action>menulateralinformes</action>
+		  			<resource>clientes:contratoempresa</resource>
+		  			<privilege>menulateralinformes</privilege>	
+		  			<visible>1</visible>
+		  		</generales>
+		  		<nominaytalentohumano>
+		  			<label>Nómina y Capital Humano</label>
+		  			<order>22</order>
+		  			<module>nomina</module>
+		  			<controller>nominames</controller>
+		  			<action>informes</action>
+		  			<resource>nomina:nominames</resource>
+		  			<privilege>informes</privilege>	
+		  			<visible>1</visible>
+		  		</nominaytalentohumano>
+		  		<historialpagos>
+                    <label>Historial pagos por empleado</label>
+                    <order>23</order>
+                    <module>nomina</module>
+                    <controller>sabanamensual</controller>
+                    <action>historialasociado</action>
+                    <resource>nomina:sabanamensual</resource>
+                    <privilege>historialasociado</privilege>
+                    <visible>1</visible>                    
+                </historialpagos>
+
+               <gdocumental>
+               		  			<label>Documental</label>
+               		  			<order>24</order>
+               		  			<module>documental</module>
+               		  			<controller>docllegada</controller>
+               		  			<action>menulateral</action>
+               		  			<resource>documental:docllegada</resource>
+               		  			<privilege>menulateral</privilege>	
+               		  			<visible>1</visible>
+               
+               		  		</gdocumental> 
+
+               	<desempenio>
+               		  			<label>Interventoría E. Desempeño</label>
+               		  			<order>25</order>
+               		  			<module>informes</module>
+               		  			<controller>informes</controller>
+               		  			<action>detalledesempenio</action>
+               		  			<resource>informes:informes</resource>
+               		  			<privilege>detalledesempenio</privilege>	
+               		  			<visible>1</visible>
+               		  		</desempenio>
+               
+               <fdesempenio>
+               		  			<label>Faltantes E. Desempeño</label>
+               		  			<order>26</order>
+               		  			<module>informes</module>
+               		  			<controller>informes</controller>
+               		  			<action>faltantesdesempenio</action>
+               		  			<resource>informes:informes</resource>
+               		  			<privilege>faltantesdesempenio</privilege>	
+               		  			<visible>1</visible>
+               		  		</fdesempenio>
+                
+
+			</pages>
+
+		</informes>
+
+		<gestion>
+            <label>Gestión</label>
+            <order>23</order>
+            <module>default</module>
+            <controller>index</controller>
+            <action>gestion</action>
+            <resource>default:index</resource>
+	  		<privilege>gestion</privilege>
+	  		<visible>1</visible>
+
+	  		<pages>
+		  		<parametros>
+		  			<label>Parámetros generales</label>
+		  			<order>24</order>
+		  			<module>admin</module>
+		  			<controller>parametros</controller>
+		  			<action>menulateral</action>
+		  			<resource>admin:parametros</resource>
+		  			<privilege>menulateral</privilege>	
+		  			<visible>1</visible>
+
+		  		</parametros>
+		  		<parametrossistema>
+		  			<label>Parámetros del Sistema</label>
+		  			<order>24</order>
+		  			<module>admin</module>
+		  			<controller>parametros</controller>
+		  			<action>sistema</action>
+		  			<resource>admin:parametros</resource>
+		  			<privilege>sistema</privilege>	
+		  			<visible>1</visible>
+		  		</parametrossistema>
+		  		<auditarturnos>
+		  			<label>Auditar Turnos</label>
+		  			<order>25</order>
+		  			<module>clientes</module>
+		  			<controller>turnoasociado</controller>
+		  			<action>auditarturnos</action>
+		  			<resource>clientes:turnoasociado</resource>
+		  			<privilege>auditarturnos</privilege>	
+		  			<visible>1</visible>
+
+		  		</auditarturnos>
+		  		<auditarnovedades>
+		  			<label>Auditar Novedades</label>
+		  			<order>26</order>
+		  			<module>clientes</module>
+		  			<controller>novedades</controller>
+		  			<action>auditarnovedades</action>
+		  			<resource>clientes:novedades</resource>
+		  			<privilege>auditarnovedades</privilege>	
+		  			<visible>1</visible>
+
+		  		</auditarnovedades>
+				<grupodeempresas>
+		  			<label>Empresas</label>
+		  			<order>27</order>
+		  			<module>clientes</module>
+		  			<controller>tipoempresas</controller>
+		  			<action>index</action>
+		  			<resource>clientes:tipoempresas</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+
+		  		</grupodeempresas>
+		  		<empresas>
+		  			<label>Proyectos</label>
+		  			<order>28</order>
+		  			<module>clientes</module>
+		  			<controller>empresacliente</controller>
+		  			<action>index</action>
+		  			<resource>clientes:empresacliente</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  			<pages>
+				  		<ecmenulateral>
+				  			<label>ec menulateral</label>
+				  			<order>27</order>
+				  			<module>clientes</module>
+				  			<controller>empresacliente</controller>
+				  			<action>menulateral</action>
+				  			<resource>clientes:empresacliente</resource>
+				  			<privilege>menulateral</privilege>	
+				  			<visible>0</visible>
+
+				  		</ecmenulateral>
+		  			</pages>
+
+		  		</empresas>
+		
+		  		<configuracióncontabilidad>
+		  			<label>Configuración contabilidad</label>
+		  			<order>29</order>
+		  			<module>admin</module>
+		  			<controller>puc</controller>
+		  			<action>menulateral</action>
+		  			<resource>admin:puc</resource>
+		  			<privilege>menulateral</privilege>	
+		  			<visible>1</visible>
+
+		  		</configuracióncontabilidad>
+		  		<listado>
+		  			<label>Usuarios</label>
+		  			<order>30</order>
+		  			<module>default</module>
+		  			<controller>aclusuarios</controller>
+		  			<action>index</action>
+		  			<resource>default:aclusuarios</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		
+		  		</listado>
+		  		<permisos>
+		  			<label>Ver permisos</label>
+		  			<order>30</order>
+		  			<module>default</module>
+		  			<controller>aclusuarios</controller>
+		  			<action>permisos</action>
+		  			<resource>default:aclusuarios</resource>
+		  			<privilege>permisos</privilege>	
+		  			<visible>1</visible>
+		
+		  		</permisos>
+		  		<dependencias>
+		  			<label>Roles</label>
+		  			<order>30</order>
+		  			<module>default</module>
+		  			<controller>aclroles</controller>
+		  			<action>index</action>
+		  			<resource>default:aclroles</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		
+		  		</dependencias>
+		  		
+                <notificar>
+                    <label>Enviar notificación</label>
+                    <order>36</order>
+                    <module>admin</module>
+                    <controller>notificaciones</controller>
+                    <action>notificar</action>
+                    <resource>admin:notificaciones</resource>
+                    <privilege>notificar</privilege>    
+                    <visible>1</visible>
+                </notificar>
+                <certificadoslaborales>
+                	<label>Certificados Laborales</label>
+                	<order>37</order>
+                	<module>nomina</module>
+                	<controller>certificadolaboral</controller>
+                	<action>index</action>
+                	<resource>nomina:certificadolaboral</resource>
+                	<privilege>index</privilege>	
+                	<visible>1</visible>
+                </certificadoslaborales>
+                <desempenio>
+		        	<label>Evaluación de desempeño</label>
+		        	<order>38</order>
+		        	<module>produccion</module>
+		        	<controller>desempenio</controller>
+		        	<action>index</action>
+		        	<resource>produccion:desempenio</resource>
+		        	<privilege>index</privilege>	
+		        	<visible>1</visible>
+		        </desempenio>
+		  		<solicitudesdemejorasydesarrollos>
+		  			<label>Solicitudes de Mejoras y Desarrollos</label>
+		  			<order>202</order>
+		  			<module>helpdesk</module>
+		  			<controller>solicitudesdemejorasydesarrollos</controller>
+		  			<action>index</action>
+		  			<resource>helpdesk:solicitudesdemejorasydesarrollos</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>111</visible>
+		  		
+		  		</solicitudesdemejorasydesarrollos>
+		  		<módulos>
+		  			<label>Módulos</label>
+		  			<order>203</order>
+		  			<module>helpdesk</module>
+		  			<controller>modulos</controller>
+		  			<action>index</action>
+		  			<resource>helpdesk:modulos</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		
+		  		</módulos>
+		  		<roles-departamentos>
+		  			<label>Roles - Departamentos</label>
+		  			<order>204</order>
+		  			<module>helpdesk</module>
+		  			<controller>usuariosdepartamentos</controller>
+		  			<action>index</action>
+		  			<resource>helpdesk:usuariosdepartamentos</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		
+		  		</roles-departamentos>
+		  		<estados>
+		  			<label>estados</label>
+		  			<order>205</order>
+		  			<module>helpdesk</module>
+		  			<controller>estadosolicitud</controller>
+		  			<action>index</action>
+		  			<resource>helpdesk:estadosolicitud</resource>
+		  			<privilege>index</privilege>	
+		  			<visible>1</visible>
+		  		
+		  		</estados>
+		  		<carnetizacion>
+		            <label>Carnetizacion</label>
+		            <order>32</order>
+		            <module>carnetizacion</module>
+		            <controller>controldecarnets</controller>
+		            <action>index</action>
+		            <resource>carnetizacion:controldecarnets</resource>
+			  		<privilege>index</privilege>
+			  		<visible>1</visible>
+			  		
+				</carnetizacion>
+			</pages>
+
+		</gestion>
+		 <admindocumental>
+		  			<label>Documentos</label>
+		  			<order>24</order>
+		  			<module>documental</module>
+		  			<controller>docllegada</controller>
+		  			<action>misdocumentos</action>
+		  			<resource>documental:docllegada</resource>
+		  			<privilege>misdocumentos</privilege>	
+		  			<visible>1</visible>
+		  			<pages>
+				<misdocumentos>
+		                    <label>Mis documentos</label>
+		                    <order>31</order>
+		                    <module>documental</module>
+		                    <controller>docllegada</controller>
+		                    <action>misdocumentos</action>
+		                    <resource>documental:docllegada</resource>
+		                    <privilege>misdocumentos</privilege>    
+		                    <visible>1</visible>
+		                </misdocumentos>
+		  		<listadodocumentos>
+		                    <label>Llegada de Documentos</label>
+		                    <order>32</order>
+		                    <module>documental</module>
+		                    <controller>docllegada</controller>
+		                    <action>index</action>
+		                    <resource>documental:docllegada</resource>
+		                    <privilege>index</privilege>    
+		                    <visible>1</visible>
+		                </listadodocumentos>
+		                <salidadocumentos>
+		                    <label>Salida de Documentos</label>
+		                    <order>33</order>
+		                    <module>documental</module>
+		                    <controller>docsalida</controller>
+		                    <action>index</action>
+		                    <resource>documental:docsalida</resource>
+		                    <privilege>index</privilege>    
+		                    <visible>1</visible>
+		                </salidadocumentos>
+		                <tipodedocumentos>
+		                    <label>Tipos de Documentos</label>
+		                    <order>35</order>
+		                    <module>documental</module>
+		                    <controller>doctiposdocumentos</controller>
+		                    <action>index</action>
+		                    <resource>documental:doctiposdocumentos</resource>
+		                    <privilege>index</privilege>    
+		                    <visible>1</visible>
+		                </tipodedocumentos>
+		                <docasociaciones>
+		                    <label>Asociaciones documentos</label>
+		                    <order>33</order>
+		                    <module>documental</module>
+		                    <controller>docasociaciones</controller>
+		                    <action>index</action>
+		                    <resource>documental:docasociaciones</resource>
+		                    <privilege>index</privilege>    
+		                    <visible>1</visible>
+		                </docasociaciones>
+		                <docareas>
+		                    <label>Areas de documentos</label>
+		                    <order>34</order>
+		                    <module>documental</module>
+		                    <controller>docareas</controller>
+		                    <action>index</action>
+		                    <resource>documental:docareas</resource>
+		                    <privilege>index</privilege>    
+		                    <visible>1</visible>
+		                </docareas>
+		                <docestante>
+		                    <label>Estantes de documentos</label>
+		                    <order>35</order>
+		                    <module>documental</module>
+		                    <controller>docestante</controller>
+		                    <action>index</action>
+		                    <resource>documental:docestante</resource>
+		                    <privilege>index</privilege>    
+		                    <visible>1</visible>
+		                </docestante>
+		                <listadoprocesos>
+		                    <label>SGC</label>
+		                    <order>36</order>
+		                    <module>calidad</module>
+		                    <controller>procesos</controller>
+		                    <action>mapadeprocesos</action>
+		                    <resource>calidad:procesos</resource>
+		                    <privilege>mapadeprocesos</privilege>    
+		                    <visible>1</visible>
+		                </listadoprocesos>
+		            </pages>
+		  		</admindocumental>
+		<miperfil>
+            <label>Mi perfil</label>
+            <order>30</order>
+            <module>default</module>
+            <controller>aclusuarios</controller>
+            <action>perfil</action>
+            <resource>default:aclusuarios</resource>
+	  		<privilege>perfil</privilege>
+	  		<visible>1</visible>
+			<icon>icon-lock</icon>
+
+
+	  		<pages>
+		  		<datos>
+		  			<label>Mi perfil</label>
+		  			<order>31</order>
+		  			<module>default</module>
+		  			<controller>aclusuarios</controller>
+		  			<action>perfil</action>
+		  			<resource>default:aclusuarios</resource>
+		  			<privilege>perfil</privilege>	
+		  			<visible>1</visible>
+		  			<class>linkonmodal</class>
+
+		  		</datos>
+		  		<contrasena>
+		  			<label>Mi Contraseña</label>
+		  			<order>32</order>
+		  			<module>default</module>
+		  			<controller>aclusuarios</controller>
+		  			<action>pass</action>
+		  			<resource>default:aclusuarios</resource>
+		  			<privilege>pass</privilege>	
+		  			<visible>1</visible>
+		  			<class>linkonmodal</class>
+		  		</contrasena>
+			</pages>
+		</miperfil>
+		<logout>
+            <label></label>
+            <order>100</order>
+            <module>default</module>
+            <controller>authentication</controller>
+            <action>logout</action>
+            <icon>icon-off</icon>
+            <title>Salida segura</title>
+        </logout>
+    </nav>
+</config>

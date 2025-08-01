@@ -1,0 +1,33 @@
+
+		<div class="" style="background-color: <?php echo $color ?>; border-bottom: 3px solid white"> 
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="nav-collapse collapse pull-right" style="color:white">
+					<?php if( $estadoCliente == "Prueba"){ 
+						if( $diasFaltan > 5){ 
+							echo "Tienes <strong>".$diasFaltan."</strong> días de prueba, decídete y adquiere Caudata."; 
+						 }else{ 
+							echo "Solo te quedan <strong>".$diasFaltan."</strong> días de prueba, decídete y adquiere Caudata ya.";
+						 } 
+					?>
+						<a class="btn btn-warning activarcaudata" style="background-color: #FE9A2E !important; color:white;" >Adquirirlo</a>
+					<?php }elseif( $estadoCliente == "En Preaviso"){ ?>
+
+						Tu cuenta esta proxima a ser eliminada, comunícate con nosotros o haz click en este botón.
+						<a class="btn btn-default activarcaudata" style=" color:gray;" ><b>Solicitar contacto de Caudata</b></a>
+
+					<?php }elseif( $estadoCliente == "Consulta"){ ?>
+
+						Tu cuenta es de solo consulta, Comunícate con nosotros o haz click en este botón
+						<a class="btn btn-default activarcaudata" style=" color:gray;" ><b>Cambiar mi Estado</b></a>
+
+					<?php }elseif( $estadoCliente == "Inactivo"){ ?>
+						
+						Te encuentras en modo: <b><?php echo $estadoCliente?></b>, Comunícate con nosotros o haz click en este botón
+						<a class="btn btn-default activarcaudata" style=" color:gray;" ><b>Cambiar mi Estado</b></a>
+					<?php } ?>
+						
+					</div>
+				</div>
+			</div>
+		</div>

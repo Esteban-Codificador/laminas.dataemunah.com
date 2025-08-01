@@ -1,0 +1,28 @@
+# Vendor
+/vendor/
+
+# Config files
+/config/autoload/*.local.php
+/config/development.config.php
+
+# Data
+/data/cache/*
+!/data/cache/.gitkeep
+/data/logs/*
+!/data/logs/.gitkeep
+/data/sessions/*
+!/data/sessions/.gitkeep
+
+# Legacy (temporal durante migración)
+/legacy-code/*
+!/legacy-code/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
