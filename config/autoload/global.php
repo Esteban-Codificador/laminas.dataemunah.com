@@ -1,17 +1,54 @@
 <?php
-
-/**
- * Global Configuration Override
- *
- * You can use this file for overriding configuration values from modules, etc.
- * You would place values in here that are agnostic to the environment and not
- * sensitive to security.
- *
- * NOTE: In practice, this file will typically be INCLUDED in your source
- * control, so do not include passwords or other sensitive information in this
- * file.
- */
-
 return [
+    // ...
+
+    'navigation' => [
+
+        // Navigation with name default
+        'default' => [
+            [
+                'label' => 'Home',
+                'route' => 'home',
+            ],
+            [
+                'label' => 'Page #1',
+                'route' => 'page-1',
+                'pages' => [
+                    [
+                        'label' => 'Child #1',
+                        'route' => 'page-1-child',
+                    ],
+                ],
+            ],
+            [
+                'label' => 'Page #2',
+                'route' => 'page-2',
+            ],
+        ],
+
+        // Navigation with name special
+        'special' => [
+            [
+                'label' => 'Special',
+                'route' => 'special',
+            ],
+            [
+                'label' => 'Special Page #2',
+                'route' => 'special-2',
+            ],
+        ],
+
+        // Navigation with name sitemap
+        'sitemap' => [
+            [
+                'label' => 'Sitemap',
+                'route' => 'sitemap',
+            ],
+            [
+                'label' => 'Sitemap Page #2',
+                'route' => 'sitemap-2',
+            ],
+        ],
+    ],
     // ...
 ];

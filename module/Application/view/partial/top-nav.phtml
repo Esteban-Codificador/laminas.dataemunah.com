@@ -1,0 +1,52 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ * @var Laminas\Navigation\AbstractContainer $container
+ */
+?>
+<ul class="nav nav-pills context-nav-pills">
+    <?php foreach ($container as $page): ?>
+        <?php if (!$page->isVisible()) continue; ?>
+        
+        <li class="nav-item<?= $page->hasPages() ? ' dropdown' : '' ?>">
+            <?php if ($page->hasPages()): ?>
+                <!-- Dropdown con submenú -->
+                <a class="nav-link dropdown-toggle" 
+                   href="<?= $page->getHref() ?>" 
+                   id="<?= $page->getId() ?>Dropdown" 
+                   data-bs-toggle="dropdown" 
+                   aria-expanded="false">
+                    <?php if ($page->get('icon')): ?>
+                        <i class="<?= $page->get('icon') ?>"></i>
+                    <?php endif; ?>
+                    <?= $this->escapeHtml($page->getLabel()) ?>
+                </a>
+                
+                <ul class="dropdown-menu context-dropdown" aria-labelledby="<?= $page->getId() ?>Dropdown">
+                    <?php foreach ($page->getPages() as $subPage): ?>
+                        <?php if (!$subPage->isVisible()) continue; ?>
+                        
+                        <li>
+                            <a class="dropdown-item" href="<?= $subPage->getHref() ?>">
+                                <?php if ($subPage->get('icon')): ?>
+                                    <i class="<?= $subPage->get('icon') ?>"></i>
+                                <?php endif; ?>
+                                <?= $this->escapeHtml($subPage->getLabel()) ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                
+            <?php else: ?>
+                <!-- Enlace simple -->
+                <a class="<?= $page->get('class') ?: 'nav-link' ?>" 
+                   href="<?= $page->getHref() ?>">
+                    <?php if ($page->get('icon')): ?>
+                        <i class="<?= $page->get('icon') ?>"></i>
+                    <?php endif; ?>
+                    <?= $this->escapeHtml($page->getLabel()) ?>
+                </a>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+</ul>

@@ -6,6 +6,9 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Laminas\Router',
+    'Laminas\Log',
+    'Laminas\Navigation',
     'Laminas\Mvc\Plugin\FilePrg',
     'Laminas\Mvc\Plugin\FlashMessenger',
     'Laminas\Mvc\Plugin\Identity',
@@ -20,9 +23,8 @@ return [
     'Laminas\Hydrator',
     'Laminas\Di',
     'Laminas\Db',
-    'Laminas\Log',
-    'Laminas\Router',
     'Laminas\Validator',
+    // 'Laminas\Permissions\Acl',   // <-- Y esta si instalaste ACL
     'Laminas\DeveloperTools',
     'Laminas\Diactoros',
     'Application',

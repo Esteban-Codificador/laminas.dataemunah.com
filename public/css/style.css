@@ -1,17 +1,696 @@
 :root {
-    --brand-color: #013755;
+  /* === COLORES PRINCIPALES EXTRAÍDOS === */
+  
+  /* Azul principal del header (gradiente) */
+  --primary-blue: #275093;
+  --primary-blue-dark: #1e3d72;
+  --primary-blue-light: #3d6bb0;
+  
+  /* Botón "Empresa a trabajar" */
+  --warning-orange: #ff9500;
+  --warning-orange-hover: #e6851a;
+  --warning-orange-light: #ffb84d;
+  
+  /* Badge de notificaciones */
+  --notification-red: #ff4757;
+  --notification-red-dark: #e84118;
+  
+  /* === COLORES COMPLEMENTARIOS SUGERIDOS === */
+  
+  /* Blancos y grises */
+  --white: #ffffff;
+  --gray-50: #f8f9fa;
+  --gray-100: #e9ecef;
+  --gray-200: #dee2e6;
+  --gray-300: #ced4da;
+  --gray-400: #adb5bd;
+  --gray-500: #6c757d;
+  --gray-600: #495057;
+  --gray-700: #343a40;
+  --gray-800: #212529;
+  --gray-900: #1a1d20;
+  
+  /* Azules complementarios */
+  --blue-50: #e3f2fd;
+  --blue-100: #bbdefb;
+  --blue-200: #90caf9;
+  --blue-300: #64b5f6;
+  --blue-400: #42a5f5;
+  --blue-500: var(--primary-blue);
+  --blue-600: #1e88e5;
+  --blue-700: #1976d2;
+  --blue-800: #1565c0;
+  --blue-900: #0d47a1;
+  
+  /* Verdes para estados de éxito */
+  --success-green: #10ac84;
+  --success-green-light: #55efc4;
+  --success-green-dark: #00b894;
+  
+  /* Rojos para errores */
+  --error-red: #ee5a52;
+  --error-red-light: #ff7675;
+  --error-red-dark: #d63031;
+  
+  /* Amarillos para advertencias */
+  --warning-yellow: #fdcb6e;
+  --warning-yellow-light: #f1c40f;
+  --warning-yellow-dark: #f39c12;
+  
+  /* === COLORES PARA TRANSPARENCIAS === */
+  
+  /* Overlays y fondos semi-transparentes */
+  --overlay-dark: rgba(0, 0, 0, 0.5);
+  --overlay-light: rgba(255, 255, 255, 0.9);
+  --backdrop: rgba(44, 90, 160, 0.1);
+  
+  /* Bordes y elementos sutiles */
+  --border-light: rgba(255, 255, 255, 0.2);
+  --border-medium: rgba(255, 255, 255, 0.3);
+  --border-strong: rgba(0, 0, 0, 0.1);
+  
+  /* === GRADIENTES === */
+  
+  /* Gradiente principal del header */
+  --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  --gradient-primary-reverse: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+  
+  /* Gradientes complementarios */
+  --gradient-blue-light: linear-gradient(135deg, var(--blue-400) 0%, var(--blue-600) 100%);
+  --gradient-orange: linear-gradient(135deg, var(--warning-orange) 0%, var(--warning-orange-hover) 100%);
+  --gradient-success: linear-gradient(135deg, var(--success-green-light) 0%, var(--success-green) 100%);
+  
+  /* === SOMBRAS === */
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 8px 30px rgba(0, 0, 0, 0.2);
+  
+  /* Sombras con color */
+  --shadow-primary: 0 4px 15px rgba(44, 90, 160, 0.2);
+  --shadow-orange: 0 2px 8px rgba(255, 149, 0, 0.3);
+  
+  /* === COLORES DE TEXTO === */
+  
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-muted: var(--gray-500);
+  --text-light: var(--gray-400);
+  --text-white: var(--white);
+  --text-link: var(--primary-blue);
+  --text-link-hover: var(--primary-blue-dark);
+  
+  /* === COLORES DE FONDO === */
+  
+  --bg-primary: var(--white);
+  --bg-secondary: var(--gray-50);
+  --bg-muted: var(--gray-100);
+  --bg-dark: var(--gray-800);
+  --bg-header: var(--gradient-primary);
+  
+  /* === ESTADOS INTERACTIVOS === */
+  
+  /* Hover states */
+  --hover-primary: rgba(44, 90, 160, 0.1);
+  --hover-secondary: rgba(255, 255, 255, 0.1);
+  --hover-orange: rgba(255, 149, 0, 0.1);
+  
+  /* Focus states */
+  --focus-ring: 0 0 0 3px rgba(44, 90, 160, 0.25);
+  --focus-ring-orange: 0 0 0 3px rgba(255, 149, 0, 0.25);
+  
+  /* === TRANSICIONES === */
+  
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.2s ease-in-out;
+  --transition-slow: 0.3s ease-in-out;
 }
 
-.navbar {
-    background-color: var(--brand-color);
-}
 
 .btn-primary {
     background-color: var(--brand-color);
     border-color: var(--brand-color);
 }
 
-/* allows bootstrap to style Laminas Navigation generated menu items within the navbar */
-.navbar li.active a {
-    color: var(--bs-navbar-active-color);
+/* Navbar principal */
+
+.main-navbar {
+    height: 54px;
+    background-color: var(--primary-blue);
+    padding: 0px;
+    box-shadow: var(--shadow-sm);
+}
+
+.main-section-navbar {
+    max-height: 54px;   
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.main-section-navbar img {
+    height: 20px;
+}
+
+.main-section-navbar .favicon {
+    margin-right: 8px;
+}
+
+/* Herramientas de la navbar */
+.navbar-header{
+    padding-left: 12px;
+    max-width: max-content;
+}
+.navbar-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botón de búsqueda */
+.navbar-tools .btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: var(--transition-normal);
+}
+
+.navbar-tools .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+/* Botón de notificaciones */
+.btn-notification {
+    position: relative;
+    background: var(--warning-orange);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+}
+
+.btn-notification:hover {
+    background: var(--warning-orange-hover);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-orange);
+}
+
+.btn-notification:focus {
+    box-shadow: var(--focus-ring-orange);
+}
+
+.btn-notification::after {
+    display: none; /* Ocultar la flecha del dropdown */
+}
+
+/* Badge de notificaciones */
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: var(--notification-red);
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-blue);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Dropdown de notificaciones */
+.notification-dropdown {
+    min-width: 235px;
+    max-width: 350px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    padding: 0;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+/* Header del dropdown */
+.notification-header {
+    background: var(--warning-orange);
+    color: white;
+    padding: 8px 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notification-header .notification-icon {
+    font-size: 16px;
+}
+
+.notification-header .notification-count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+/* Lista de notificaciones */
+.notification-list {
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--gray-100);
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background: var(--gray-50);
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+/* Avatar de notificación */
+.notification-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: var(--gray-600);
+    font-size: 16px;
+}
+
+/* Contenido de notificación */
+.notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-title {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.notification-title i {
+    color: var(--gray-500);
+    font-size: 12px;
+}
+
+.company-id {
+    color: var(--gray-600);
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.company-name {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Footer del dropdown */
+.notification-footer {
+    background: var(--gray-50);
+    padding: 8px 6px;
+    text-align: center;
+    border-top: 1px solid var(--gray-100);
+}
+
+.notification-footer .btn-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 8px;
+    transition: var(--transition-normal);
+}
+
+.notification-footer .btn-link:hover {
+    color: var(--primary-blue-dark);
+    text-decoration: underline;
+}
+
+/* Scrollbar personalizada para la lista */
+.notification-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 2px;
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .notification-dropdown {
+        min-width: 280px;
+        max-width: 320px;
+        margin-right: 16px;
+    }
+    
+    .notification-item {
+        padding: 10px 12px;
+    }
+    
+    .notification-title {
+        font-size: 12px;
+    }
+}
+
+/* Estados adicionales */
+.notification-item.unread {
+    background: rgba(44, 90, 160, 0.02);
+    border-left: 3px solid var(--primary-blue);
+}
+
+.notification-item.unread .notification-avatar {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Animación para el badge */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.notification-badge.new {
+    animation: pulse 2s infinite;
+}
+
+/* Tooltip para el botón de notificaciones */
+.btn-notification[title]:hover::before {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gray-800);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* === SEGUNDA SECCIÓN DEL NAVBAR === */
+
+/* Contenedor principal de la segunda sección */
+.navbar-menu {
+    background: var(--primary-blue);
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 45px;
+}
+
+/* Navegación contextual (breadcrumb) */
+.context-navigation {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-home-icon {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: var(--transition-normal);
+}
+
+.nav-home-icon:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.nav-separator {
+    margin: 0 8px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-current {
+    color: white;
+    font-weight: 600;
+}
+
+/* Menú contextual principal */
+.context-menu {
+    flex: 1;
+}
+
+/* Pills de navegación contextual */
+.context-nav-pills {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 4px;
+}
+
+.context-nav-pills .nav-item {
+    position: relative;
+}
+
+/* Enlaces de navegación */
+.context-nav-pills .nav-link {
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.context-nav-pills .nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.context-nav-pills .nav-link i {
+    font-size: 13px;
+}
+.context-nav-pills .nav-link.show{
+    background-color: var(--warning-orange);
+    color: var(--white);
+}
+
+/* Dropdown contextual */
+.context-dropdown {
+    border: none;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    padding: 8px 0;
+    margin-top: 4px;
+    min-width: 200px;
+    background: white;
+}
+
+.context-dropdown .dropdown-item {
+    padding: 10px 16px;
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+}
+
+.context-dropdown .dropdown-item:hover {
+    background: var(--hover-primary);
+    color: var(--primary-blue);
+}
+
+
+
+.context-dropdown .dropdown-item i {
+    color: var(--gray-500);
+    font-size: 12px;
+    width: 16px;
+}
+
+.context-dropdown .dropdown-item:hover i {
+    color: var(--primary-blue);
+}
+
+.context-dropdown .dropdown-item.text-danger {
+    color: var(--error-red);
+}
+
+.context-dropdown .dropdown-item.text-danger:hover {
+    background: rgba(238, 90, 82, 0.1);
+    color: var(--error-red-dark);
+}
+
+.context-dropdown .dropdown-divider {
+    margin: 4px 0;
+    border-color: var(--gray-200);
+}
+
+/* Botón "Empresa a trabajar" */
+.empresa-selector .btn-empresa {
+    background: var(--warning-orange);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.empresa-selector .btn-empresa:hover {
+    background: white;
+    color: var(--warning-orange-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.empresa-selector .btn-empresa i {
+    font-size: 12px;
+}
+
+/* Responsive para la segunda sección */
+@media (max-width: 1200px) {
+    .context-nav-pills .nav-link {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .empresa-selector .btn-empresa {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar-menu {
+        flex-direction: column;
+        align-items: flex-start !important;
+        padding: 8px 12px;
+    }
+    
+    .context-navigation {
+        margin-bottom: 8px;
+    }
+    
+    .context-menu {
+        width: 100%;
+    }
+    
+    .context-nav-pills {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    
+    .context-nav-pills .nav-link {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .empresa-selector {
+        margin-left: 0 !important;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .context-nav-pills {
+        display: none; /* Ocultar en móviles muy pequeños */
+    }
+    
+    .navbar-menu {
+        justify-content: space-between !important;
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+    
+    .context-navigation {
+        margin-bottom: 0;
+    }
+    
+    .empresa-selector {
+        margin-top: 0;
+    }
+}
+
+/* Animaciones suaves */
+.context-nav-pills .nav-link,
+.context-dropdown,
+.btn-empresa {
+    transition: all var(--transition-normal);
+}
+
+/* Estados de focus para accesibilidad */
+.context-nav-pills .nav-link:focus,
+.btn-empresa:focus {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+
+/* Ajuste para el z-index de los dropdowns */
+.context-menu .dropdown {
+    position: relative;
+    z-index: 1040;
+}
+
+.context-dropdown {
+    z-index: 1041;
 }
