@@ -1,70 +1,449 @@
 <?php
 /**
- * Configuración de Navegación para Laminas
+ * Configuración de Navegación para Laminas con Bootstrap
  * Archivo: config/autoload/navigation.global.php
  */
-
 return [
     'navigation' => [
         'default' => [
-            [
-                'label' => 'Inicio',
+            'home' => [
+                'label' => '',
                 'route' => 'home',
-                'resource' => 'home',
-                'privilege' => 'view'
+                'order' => -100,
+                'class' => 'btn btn-outline-light me-2',
+                'icon'  => 'fa-solid fa-house',
+                'title' => 'Inicio', // Para accesibilidad
             ],
-            [
+            'capital-humano' => [
                 'label' => 'Capital Humano',
-                'route' => 'capital-humano',
-                'resource' => 'capital-humano',
-                'privilege' => 'view',
+                'uri'   => '#',
+                'order' => 5,
+                'class' => 'nav-link dropdown-toggle',
+                'icon'  => 'fas fa-users me-2',
+                'id'    => 'capitalHumanoDropdown',
+                'data-bs-toggle' => 'dropdown',
+                'aria-expanded' => 'false',
                 'pages' => [
-                    [
-                        'label' => 'Empleados',
-                        'route' => 'empleados',
-                        'resource' => 'empleados',
-                        'privilege' => 'view'
+                    'trabajadores' => [
+                        'label' => 'Trabajadores',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-user-plus me-2',
+                        'class' => 'dropdown-item',
                     ],
-                    [
-                        'label' => 'Nómina',
-                        'route' => 'nomina',
-                        'resource' => 'nomina',
-                        'privilege' => 'view'
-                    ],
-                    [
+                    'contratos' => [
                         'label' => 'Contratos',
-                        'route' => 'contratos',
-                        'resource' => 'contratos',
-                        'privilege' => 'view'
-                    ]
-                ]
-            ],
-            [
-                'label' => 'Turnos',
-                'route' => 'turnos',
-                'resource' => 'turnos',
-                'privilege' => 'view'
-            ],
-            [
-                'label' => 'Informes',
-                'route' => 'informes',
-                'resource' => 'informes',
-                'privilege' => 'view',
-                'pages' => [
-                    [
-                        'label' => 'Reportes',
-                        'route' => 'reportes',
-                        'resource' => 'reportes',
-                        'privilege' => 'view'
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-file-contract me-2',
+                        'class' => 'dropdown-item',
                     ],
-                    [
-                        'label' => 'Estadísticas',
-                        'route' => 'estadisticas',
-                        'resource' => 'estadisticas',
-                        'privilege' => 'view'
-                    ]
-                ]
-            ]
-        ]
-    ]
+                    'verificar-novedades' => [
+                        'label' => 'Verificar Novedades',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-bell me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'nomina' => [
+                        'label' => 'Nómina',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-money-bill-wave me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'amortizacion' => [
+                        'label' => 'Amortización',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-coins me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'ingresos-fijos' => [
+                        'label' => 'Ingresos Fijos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-chart-line me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'vacaciones' => [
+                        'label' => 'Vacaciones',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-umbrella-beach me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'prima' => [
+                        'label' => 'Prima',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-gift me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'cesantias' => [
+                        'label' => 'Cesantías',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-piggy-bank me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'liquidaciones-masivas' => [
+                        'label' => 'Liquidaciones Masivas',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-file-invoice-dollar me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'liquidaciones' => [
+                        'label' => 'Liquidaciones',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-file-invoice me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'certificados-laborales' => [
+                        'label' => 'Certificados Laborales',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-certificate me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'actualizar-trabajador' => [
+                        'label' => 'Actualizar trabajador de Empresa',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-user-edit me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'embargos' => [
+                        'label' => 'Embargos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-balance-scale me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'informes-contabilidad' => [
+                        'label' => 'Informes Contabilidad',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-chart-pie me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'pagos-bancos' => [
+                        'label' => 'Pagos en Bancos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-university me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                ],
+
+            ],
+            'turnos' => [
+                'label' => 'Turnos',
+                'uri'   => '#',
+                'order' => 10,
+                'class' => 'nav-link dropdown-toggle',
+                'icon'  => 'fas fa-clock me-2',
+                'id'    => 'turnosDropdown',
+                'data-bs-toggle' => 'dropdown',
+                'aria-expanded' => 'false',
+                'pages' => [
+                    'turnos' => [
+                        'label' => 'Turnos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-user-clock me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'novedades' => [
+                        'label' => 'Novedades',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-exclamation-circle me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'reporte-diario' => [
+                        'label' => 'Reporte de tiempos Diario',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-calendar-day me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'reporte-semanal' => [
+                        'label' => 'Reporte de tiempos Semanal',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-calendar-week me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'turnos-masivos' => [
+                        'label' => 'Turnos masivos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-users-cog me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                ],
+
+            ],
+            'informes' => [
+                'label' => 'Informes',
+                'uri'   => '#',
+                'order' => 15,
+                'class' => 'nav-link dropdown-toggle',
+                'icon'  => 'fas fa-chart-line me-2',
+                'id'    => 'informesDropdown',
+                'data-bs-toggle' => 'dropdown',
+                'aria-expanded' => 'false',
+                'pages' => [
+                    'certificado_ingresos' => [
+                        'label' => 'Certificado de ingresos y retenciones',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-file-invoice-dollar me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'generales' => [
+                        'label' => 'Generales',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-cogs me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'nomina_capital' => [
+                        'label' => 'Nómina y Capital Humano',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-users me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'historial_pagos' => [
+                        'label' => 'Historial pagos por empleado',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-history me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'documental' => [
+                        'label' => 'Documental',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-folder-open me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'interventoria' => [
+                        'label' => 'Interventoría E. Desempeño',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-user-check me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'faltantes' => [
+                        'label' => 'Faltantes E. Desempeño',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-user-times me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                ],
+
+            ],
+            'gestion' => [
+                'label' => 'Gestión',
+                'uri'   => '#',
+                'order' => 20,
+                'class' => 'nav-link dropdown-toggle',
+                'icon'  => 'fas fa-cogs me-2',
+                'id'    => 'gestionDropdown',
+                'data-bs-toggle' => 'dropdown',
+                'aria-expanded' => 'false',
+                'pages' => [
+                    'parametros_generales' => [
+                        'label' => 'Parámetros generales',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-sliders-h me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'parametros_sistema' => [
+                        'label' => 'Parámetros del Sistema',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-cogs me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'auditar_turnos' => [
+                        'label' => 'Auditar Turnos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-clock me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'auditar_novedades' => [
+                        'label' => 'Auditar Novedades',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-history me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'empresas' => [
+                        'label' => 'Empresas',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-building me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'proyectos' => [
+                        'label' => 'Proyectos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-project-diagram me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'configuracion_contabilidad' => [
+                        'label' => 'Configuración contabilidad',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-file-invoice-dollar me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'roles' => [
+                        'label' => 'Roles',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-user-tag me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'ver_permisos' => [
+                        'label' => 'Ver permisos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-key me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'usuarios' => [
+                        'label' => 'Usuarios',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-user-shield me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'carnetizacion' => [
+                        'label' => 'Carnetización',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-id-badge me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'enviar_notificacion' => [
+                        'label' => 'Enviar notificación',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-bell me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'certificados_laborales' => [
+                        'label' => 'Certificados Laborales',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-file-alt me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'evaluacion_desempeno' => [
+                        'label' => 'Evaluación de desempeño',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-chart-line me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'solicitudes_mejoras' => [
+                        'label' => 'Solicitudes de Mejoras y Desarrollos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-lightbulb me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'modulos' => [
+                        'label' => 'Módulos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-puzzle-piece me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'roles_departamentos' => [
+                        'label' => 'Roles - Departamentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-sitemap me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'estados' => [
+                        'label' => 'Estados',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-flag me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                ],
+            ],
+            'documentos' => [
+                'label' => 'Documentos',
+                'uri'   => '#',
+                'order' => 25,
+                'class' => 'nav-link dropdown-toggle',
+                'icon'  => 'fas fa-folder me-2',
+                'id'    => 'documentosDropdown',
+                'data-bs-toggle' => 'dropdown',
+                'aria-expanded' => 'false',
+                'pages' => [
+                    'mis_documentos' => [
+                        'label' => 'Mis documentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-folder-open me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'llegada_documentos' => [
+                        'label' => 'Llegada de Documentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-download me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'asociaciones_documentos' => [
+                        'label' => 'Asociaciones documentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-link me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'salida_documentos' => [
+                        'label' => 'Salida de Documentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-upload me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'areas_documentos' => [
+                        'label' => 'Areas de documentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-sitemap me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'estantes_documentos' => [
+                        'label' => 'Estantes de documentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-archive me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'tipos_documentos' => [
+                        'label' => 'Tipos de Documentos',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-tags me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'sgc' => [
+                        'label' => 'SGC',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-cogs me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                ],
+
+            ],
+            'mi-perfil' => [
+                'label' => 'Mi perfil',
+                'uri'   => '#',
+                'order' => 30,
+                'class' => 'nav-link dropdown-toggle',
+                'icon'  => 'fas fa-user me-2',
+                'id'    => 'perfilDropdown',
+                'data-bs-toggle' => 'dropdown',
+                'aria-expanded' => 'false',
+                'pages' => [
+                    'ver-perfil' => [
+                        'label' => 'Ver perfil',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-id-card me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'editar-perfil' => [
+                        'label' => 'Editar perfil',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-edit me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'cambiar-password' => [
+                        'label' => 'Cambiar contraseña',
+                        'uri'   => '#',
+                        'icon'  => 'fas fa-key me-2',
+                        'class' => 'dropdown-item',
+                    ],
+                    'divider-2' => [
+                        'label' => '',
+                        'uri'   => '#',
+                        'class' => 'dropdown-divider'
+                    ],
+                    'logout' => [
+                        'label' => 'Cerrar sesión',
+                        'uri'   => 'auth/logout',
+                        'icon'  => 'fas fa-sign-out-alt me-2',
+                        'class' => 'dropdown-item text-danger',
+                        'order' => 100,
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];

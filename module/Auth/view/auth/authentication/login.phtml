@@ -1,0 +1,165 @@
+<?php
+// Set page title
+$this->headTitle($title);
+
+// Add CSS for login page
+$this->headLink()->appendStylesheet('/css/login.css');
+?>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="card">
+            <div class="card-header text-center">
+                <h4 class="card-title mb-0">
+                    <i class="fas fa-sign-in-alt me-2"></i>
+                    <?= $this->escapeHtml($title) ?>
+                </h4>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($errorMessage)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <?= $this->escapeHtml($errorMessage) ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php
+                $form->setAttribute('action', $this->url('auth', ['action' => 'login']));
+                $form->prepare();
+                echo $this->form()->openTag($form);
+                ?>
+
+                    <!-- CSRF Token -->
+                    <?= $this->formElement($form->get('csrf')); ?>
+
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <?= $this->formLabel($form->get('username')); ?>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <?= $this->formElement($form->get('username')); ?>
+                        </div>
+                        <?= $this->formElementErrors($form->get('username')); ?>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <?= $this->formLabel($form->get('password')); ?>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <?= $this->formElement($form->get('password')); ?>
+                        </div>
+                        <?= $this->formElementErrors($form->get('password')); ?>
+                    </div>
+
+                    <!-- Remember Me Checkbox -->
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <?= $this->formElement($form->get('remember')); ?>
+                            <?= $this->formLabel($form->get('remember')); ?>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <?= $this->formElement($form->get('submit')); ?>
+                    </div>
+
+                <?= $this->form()->closeTag(); ?>
+            </div>
+            <div class="card-footer text-center">
+                <small class="text-muted">
+                    <i class="fas fa-shield-alt me-1"></i>
+                    Acceso seguro al sistema
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .auth-body {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+        min-height: 100vh;
+    }
+
+    .auth-header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .auth-brand .favicon {
+        height: 32px;
+        width: auto;
+    }
+
+    .auth-brand .logo {
+        height: 40px;
+        width: auto;
+    }
+
+    .auth-container {
+        display: flex;
+        align-items: center;
+        min-height: calc(100vh - 120px);
+        padding: 2rem 0;
+    }
+
+    .login-card .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .login-card .card-header {
+        background: var(--primary-blue);
+        color: white;
+        border-radius: 15px 15px 0 0 !important;
+        border: none;
+        padding: 1.5rem;
+    }
+
+    .login-card .card-body {
+        padding: 2rem;
+    }
+
+    .login-card .card-footer {
+        background: rgba(108, 117, 125, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 15px 15px;
+        padding: 1rem;
+    }
+
+    .login-card .form-control {
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        padding: 0.75rem 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .login-card .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+
+    .login-card .btn-primary {
+        background: var(--primary-blue);
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .login-card .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+</style>

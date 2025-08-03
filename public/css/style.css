@@ -540,7 +540,7 @@
 }
 
 .context-dropdown .dropdown-item {
-    padding: 10px 16px;
+    padding: 6px 12px;
     font-size: 14px;
     color: var(--text-primary);
     transition: var(--transition-fast);
@@ -575,8 +575,9 @@
 }
 
 .context-dropdown .dropdown-divider {
-    margin: 4px 0;
-    border-color: var(--gray-200);
+    margin: 0 0;
+    padding: 0px;
+    height: 2px;
 }
 
 /* Botón "Empresa a trabajar" */

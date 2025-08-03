@@ -21,7 +21,7 @@
         "laminas/laminas-mvc": "^3.7.0",
         "laminas/laminas-mvc-form": "^2.1.0",
         "laminas/laminas-mvc-i18n": "^1.9.0",
-        "laminas/laminas-mvc-middleware": "^2.4.0",
+        "laminas/laminas-mvc-middleware": "^2.5",
         "laminas/laminas-mvc-plugins": "^1.2.0",
         "laminas/laminas-navigation": "^2.20",
         "laminas/laminas-permissions-acl": "^2.17",
@@ -39,7 +39,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "module/Application/src/"
+            "Application\\": "module/Application/src/",
+            "Auth\\": "module/Auth/src/"
         }
     },
     "autoload-dev": {

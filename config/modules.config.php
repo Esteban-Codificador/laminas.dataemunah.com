@@ -24,8 +24,8 @@ return [
     'Laminas\Di',
     'Laminas\Db',
     'Laminas\Validator',
-    // 'Laminas\Permissions\Acl',   // <-- Y esta si instalaste ACL
     'Laminas\DeveloperTools',
     'Laminas\Diactoros',
     'Application',
+    'Auth',
 ];
